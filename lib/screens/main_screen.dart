@@ -25,6 +25,30 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
+  Widget _buildNavItem(int index, IconData icon, String label) {
+    bool isActive = _selectedIndex == index;
+    return GestureDetector(
+      onTap: () => _onItemTapped(index),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, color: isActive ? Colors.white : Colors.grey, size: 28),
+            Text(
+              label,
+              style: TextStyle(
+                color: isActive ? Colors.white : Colors.grey,
+                fontSize: 12,
+                fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,18 +65,33 @@ class _MainScreenState extends State<MainScreen> {
         ],
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.class_), label: 'My Class'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'Notification',
+      bottomNavigationBar: Container(
+        height: 62,
+        decoration: BoxDecoration(
+          color: const Color(0xFFB01116),
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(35),
+            topRight: Radius.circular(35),
           ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
-        onTap: _onItemTapped,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 10,
+              offset: const Offset(0, -2),
+            ),
+          ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildNavItem(0, Icons.home, 'Home'),
+              _buildNavItem(1, Icons.school, 'Kelas Saya'),
+              _buildNavItem(2, Icons.notifications, 'Notif'),
+            ],
+          ),
+        ),
       ),
     );
   }

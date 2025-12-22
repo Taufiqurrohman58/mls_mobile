@@ -221,7 +221,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
 
                     // Help text
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 12),
                     Center(
                       child: TextButton(
                         onPressed: () {
