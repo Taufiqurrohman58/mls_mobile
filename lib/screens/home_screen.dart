@@ -97,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF424242), 
+                        color: Color(0xFF424242),
                       ),
                     ),
                   ),
@@ -141,12 +141,15 @@ class HomeScreen extends StatelessWidget {
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
-                                  fontSize: 13
+                                  fontSize: 13,
                                 ),
                               ),
                               const Text(
                                 'Jumat 26 Februari, 23:59 WIB',
-                                style: TextStyle(color: Colors.white, fontSize: 12),
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                ),
                               ),
                             ],
                           ),
@@ -154,7 +157,33 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-
+                  Container(
+                    margin: const EdgeInsets.only(top: 16, left: 20),
+                    child: const Text(
+                      'Pengumuman Terakhir',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF424242),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: double.infinity,
+                    margin: const EdgeInsets.only(top: 8),
+                    color: Colors.grey[300],
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                      children: [
+                        const Text(
+                          'Maintenance Pra UAS Semester Genap 2020/2021',
+                          style: TextStyle(fontSize: 12, color: Colors.black),
+                        ),
+                        const SizedBox(height: 8),
+                        Image.asset('assets/images/gambar_pengumuman.png'),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
