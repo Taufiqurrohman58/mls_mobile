@@ -56,7 +56,7 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: Container(
         height: 62,
         decoration: BoxDecoration(
-          color: const Color(0xFFB01116),
+          color: const Color(0xFFB84A4A),
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(35),
             topRight: Radius.circular(35),
