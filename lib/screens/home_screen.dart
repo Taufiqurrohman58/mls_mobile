@@ -60,10 +60,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         child: const Text(
                           'MAHASISWA',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 10,
-                          ),
+                          style: TextStyle(color: Colors.white, fontSize: 10),
                         ),
                       ),
                       Container(
@@ -83,18 +80,82 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),
           Expanded(
             child: Container(
               color: Colors.grey[50],
-              child: const Center(
-                child: Text(
-                  'Welcome to Home Screen',
-                  style: TextStyle(fontSize: 18, color: Colors.grey),
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(top: 16, left: 20),
+                    child: const Text(
+                      'Tugas Yang Akan Datang',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF424242), 
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFB21F1F),
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          blurRadius: 8,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'DESAIN ANTARMUKA & PENGALAMAN PENGGUNA',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        const Text(
+                          'Tugas 01 - UID Android Mobile Game',
+                          style: TextStyle(fontSize: 12, color: Colors.white),
+                        ),
+                        const SizedBox(height: 16),
+                        Center(
+                          child: Column(
+                            children: [
+                              const Text(
+                                'Waktu Pengumpulan',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontSize: 13
+                                ),
+                              ),
+                              const Text(
+                                'Jumat 26 Februari, 23:59 WIB',
+                                style: TextStyle(color: Colors.white, fontSize: 12),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                ],
               ),
             ),
           ),
