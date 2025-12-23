@@ -203,7 +203,7 @@ class HomeScreen extends StatelessWidget {
                       year: '2021/2',
                       title: 'DESAIN ANTARMUKA & PENGALAMAN PENGGUNA',
                       code: 'D4SM-42-03 [ADY]',
-                      progress: 0.9,
+                      progress: 0.89,
                     ),
                     const SizedBox(height: 16),
                     ClassProgressItem(
