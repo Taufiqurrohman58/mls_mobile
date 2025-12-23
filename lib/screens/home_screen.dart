@@ -160,14 +160,37 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.only(top: 16, left: 20),
-                      child: const Text(
-                        'Pengumuman Terakhir',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF424242),
-                        ),
+                      margin: const EdgeInsets.only(
+                        top: 16,
+                        left: 20,
+                        right: 20,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Pengumuman Terakhir',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF424242),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 20),
+                            child: GestureDetector(
+                              onTap: () =>
+                                  Navigator.pushNamed(context, '/pengumuman'),
+                              child: Text(
+                                'lihat semua',
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     Container(

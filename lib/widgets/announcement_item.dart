@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class NotificationItem extends StatelessWidget {
+class AnnouncementItem extends StatelessWidget {
   final String imagePath;
   final String title;
-  final String time;
+  final String subtitle;
 
-  const NotificationItem({
+  const AnnouncementItem({
     super.key,
     required this.imagePath,
     required this.title,
-    required this.time,
+    required this.subtitle,
   });
 
   @override
@@ -28,13 +28,13 @@ class NotificationItem extends StatelessWidget {
                 Text(
                   title,
                   style: const TextStyle(
-                    fontSize: 13,
+                    fontSize: 14,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  time,
+                  subtitle,
                   style: TextStyle(fontSize: 11, color: Colors.grey[600]),
                 ),
               ],
