@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'profile_about_me.dart';
+import 'profile_class.dart';
+import 'profile_edit.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -64,9 +67,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               Expanded(
-                child: Container(
-                  color: Colors.grey[50],
-                  // Add content based on selected index here
+                child: IndexedStack(
+                  index: _selectedIndex,
+                  children: const [
+                    ProfileAboutMe(),
+                    ProfileClass(),
+                    ProfileEdit(),
+                  ],
                 ),
               ),
             ],
