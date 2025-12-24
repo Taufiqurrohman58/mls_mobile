@@ -43,43 +43,46 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                Container(
-                  margin: const EdgeInsets.only(top: 45),
-                  child: Stack(
-                    alignment: Alignment.centerRight,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.only(
-                          left: 8,
-                          top: 5,
-                          bottom: 5,
-                          right: 28,
+                GestureDetector(
+                  onTap: () => Navigator.pushNamed(context, '/profil'),
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 45),
+                    child: Stack(
+                      alignment: Alignment.centerRight,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.only(
+                            left: 8,
+                            top: 5,
+                            bottom: 5,
+                            right: 28,
+                          ),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFA04040).withOpacity(0.8),
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          child: const Text(
+                            'MAHASISWA',
+                            style: TextStyle(color: Colors.white, fontSize: 10),
+                          ),
                         ),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFA04040).withOpacity(0.8),
-                          borderRadius: BorderRadius.circular(25),
+                        Container(
+                          margin: const EdgeInsets.only(left: 8),
+                          width: 24,
+                          height: 24,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFB84A4A),
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.white, width: 1.5),
+                          ),
+                          child: const Icon(
+                            Icons.person,
+                            size: 12,
+                            color: Colors.white,
+                          ),
                         ),
-                        child: const Text(
-                          'MAHASISWA',
-                          style: TextStyle(color: Colors.white, fontSize: 10),
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 8),
-                        width: 24,
-                        height: 24,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFB84A4A),
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.white, width: 1.5),
-                        ),
-                        child: const Icon(
-                          Icons.person,
-                          size: 12,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ],

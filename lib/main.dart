@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'screens/login_screen.dart';
 import 'screens/main_screen.dart';
 import 'screens/pengumuman_screen.dart';
+import 'screens/profile_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -20,6 +21,7 @@ class MainApp extends StatelessWidget {
         '/login': (context) => const LoginScreen(),
         '/main': (context) => const MainScreen(),
         '/pengumuman': (context) => const PengumumanScreen(),
+        '/profil': (context) => const ProfileScreen(),
       },
     );
   }
