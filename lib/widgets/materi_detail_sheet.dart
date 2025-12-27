@@ -5,11 +5,15 @@ import 'tugas_kuis.dart';
 class MateriDetailSheet extends StatefulWidget {
   final String title;
   final String description;
+  final List<Map<String, dynamic>> materials;
+  final List<Map<String, dynamic>> tasksAndQuizzes;
 
   const MateriDetailSheet({
     super.key,
     required this.title,
     required this.description,
+    required this.materials,
+    required this.tasksAndQuizzes,
   });
 
   @override
@@ -22,7 +26,7 @@ class _MateriDetailSheetState extends State<MateriDetailSheet> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.8,
+      height: MediaQuery.of(context).size.height * 0.82,
       child: Column(
         children: [
           Center(
@@ -40,7 +44,7 @@ class _MateriDetailSheetState extends State<MateriDetailSheet> {
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Text(
               widget.title,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
           ),
@@ -52,10 +56,10 @@ class _MateriDetailSheetState extends State<MateriDetailSheet> {
               children: [
                 const Text(
                   'Deskripsi',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),
-                Text(widget.description, style: const TextStyle(fontSize: 14)),
+                Text(widget.description, style: const TextStyle(fontSize: 13)),
               ],
             ),
           ),
@@ -74,7 +78,10 @@ class _MateriDetailSheetState extends State<MateriDetailSheet> {
           Expanded(
             child: IndexedStack(
               index: _selectedIndex,
-              children: const [LampiranMateri(), TugasKuis()],
+              children: [
+                LampiranMateri(materials: widget.materials),
+                TugasKuis(tasksAndQuizzes: widget.tasksAndQuizzes),
+              ],
             ),
           ),
         ],
@@ -94,13 +101,7 @@ class _MateriDetailSheetState extends State<MateriDetailSheet> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.black,
-              ),
-            ),
+            Text(title, style: TextStyle(fontSize: 14, color: Colors.black)),
             if (isSelected)
               Container(
                 width: 50,

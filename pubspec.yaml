@@ -37,3 +37,7 @@ flutter:
     - assets/images/no-image.png
     - assets/images/profilku.jpeg
     - assets/images/ic_logout.png
+    - assets/images/ic_file_video.png
+    - assets/images/ic_interactive_content.png
+    - assets/images/ic_url.png
+    - assets/images/gembira.png
