@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'quiz_review_screen.dart';
 
 class QuizPlayScreen extends StatefulWidget {
   final String quizTitle;
@@ -17,9 +18,12 @@ class _QuizPlayScreenState extends State<QuizPlayScreen> {
   List<int?> answeredQuestions = List.filled(15, null);
 
   // Timer variables
-  int remainingSeconds = 15 * 60; 
+  int remainingSeconds = 15 * 60;
   Timer? _timer;
   String get formattedTime => _formatTime(remainingSeconds);
+
+  // Quiz timing variables
+  late int quizStartTimeInSeconds;
 
   // Sample questions data
   final List<Map<String, dynamic>> questions = [
@@ -144,6 +148,7 @@ class _QuizPlayScreenState extends State<QuizPlayScreen> {
   @override
   void initState() {
     super.initState();
+    quizStartTimeInSeconds = DateTime.now().millisecondsSinceEpoch ~/ 1000;
     _startTimer();
   }
 
@@ -167,23 +172,18 @@ class _QuizPlayScreenState extends State<QuizPlayScreen> {
   }
 
   void _handleTimeUp() {
-    // Handle quiz time up - you can show dialog or navigate back
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Waktu Habis'),
-        content: const Text(
-          'Waktu quiz telah habis. Jawaban Anda akan disubmit.',
+    // Handle quiz time up - navigate to review screen
+    int endTimeInSeconds = DateTime.now().millisecondsSinceEpoch ~/ 1000;
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => QuizReviewScreen(
+          quizTitle: widget.quizTitle,
+          answeredQuestions: answeredQuestions,
+          totalQuestions: totalQuestions,
+          startTimeInSeconds: quizStartTimeInSeconds,
+          endTimeInSeconds: endTimeInSeconds,
         ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              Navigator.pop(context);
-            },
-            child: const Text('OK'),
-          ),
-        ],
       ),
     );
   }
@@ -288,12 +288,11 @@ class _QuizPlayScreenState extends State<QuizPlayScreen> {
 
             bool shouldBeGreen = false;
             if (currentQuestion == 2 && questionNumber == 1) {
-              shouldBeGreen = true; 
+              shouldBeGreen = true;
             } else if (currentQuestion == 3 && questionNumber == 2) {
-              shouldBeGreen =
-                  true;
+              shouldBeGreen = true;
             } else if (isAnswered) {
-              shouldBeGreen = true; 
+              shouldBeGreen = true;
             }
 
             return Container(
@@ -371,7 +370,9 @@ class _QuizPlayScreenState extends State<QuizPlayScreen> {
             margin: const EdgeInsets.only(bottom: 20, right: 20, left: 20),
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: isSelected ? Color(0xFFB84A4A) : const Color.fromARGB(255, 236, 236, 236),
+              color: isSelected
+                  ? Color(0xFFB84A4A)
+                  : const Color.fromARGB(255, 236, 236, 236),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Row(
@@ -457,8 +458,21 @@ class _QuizPlayScreenState extends State<QuizPlayScreen> {
           ),
           GestureDetector(
             onTap: () {
-              // Handle quiz completion
-              Navigator.pop(context);
+              // Navigate to quiz review screen
+              int endTimeInSeconds =
+                  DateTime.now().millisecondsSinceEpoch ~/ 1000;
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => QuizReviewScreen(
+                    quizTitle: widget.quizTitle,
+                    answeredQuestions: answeredQuestions,
+                    totalQuestions: totalQuestions,
+                    startTimeInSeconds: quizStartTimeInSeconds,
+                    endTimeInSeconds: endTimeInSeconds,
+                  ),
+                ),
+              );
             },
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
