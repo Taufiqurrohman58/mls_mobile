@@ -1,10 +1,79 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../screens/slide_ppt_screen.dart';
 
 class LampiranMateri extends StatelessWidget {
   final List<Map<String, dynamic>> materials;
 
   const LampiranMateri({super.key, required this.materials});
+
+  Future<void> _launchUrl(String url, BuildContext context) async {
+    try {
+      // Ensure URL has proper scheme
+      String formattedUrl = url;
+      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        formattedUrl = 'https://$url';
+      }
+      
+      final Uri uri = Uri.parse(formattedUrl);
+      
+      // Try different launch modes in order of preference
+      if (await canLaunchUrl(uri)) {
+        await launchUrl(
+          uri,
+          mode: LaunchMode.externalApplication,
+        );
+      } else {
+        // Fallback: Try in-app web view
+        try {
+          await launchUrl(
+            uri,
+            mode: LaunchMode.inAppWebView,
+          );
+        } catch (webViewError) {
+          // If all else fails, show error dialog
+          if (context.mounted) {
+            showDialog(
+              context: context,
+              builder: (BuildContext dialogContext) {
+                return AlertDialog(
+                  title: Text('Unable to Open Link'),
+                  content: Text(
+                    'Could not open the Zoom meeting link. Please check your internet connection and try again.',
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.of(dialogContext).pop(),
+                      child: Text('OK'),
+                    ),
+                  ],
+                );
+              },
+            );
+          }
+        }
+      }
+    } catch (e) {
+      // Show error dialog for any other exceptions
+      if (context.mounted) {
+        showDialog(
+          context: context,
+          builder: (BuildContext dialogContext) {
+            return AlertDialog(
+              title: Text('Error'),
+              content: Text('Could not open the link: $e'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(dialogContext).pop(),
+                  child: Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +115,11 @@ class LampiranMateri extends StatelessWidget {
                   ),
                 ),
               );
+            } else if (material['title'] == 'Zoom Meeting Syncronous') {
+              // Launch Zoom meeting URL
+              const zoomUrl =
+                  'https://lms.telkomuniversity.ac.id/mod/url/view.php?id=1038446';
+              _launchUrl(zoomUrl, context);
             }
           },
           child: Card(

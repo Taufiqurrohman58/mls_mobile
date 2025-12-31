@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   printing: ^5.11.1
+  url_launcher: ^6.2.2
 
   
 
