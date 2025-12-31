@@ -112,7 +112,7 @@ class Materi extends StatelessWidget {
       },
       {
         'type': 'tugas',
-        'title': 'Tugas Desain Mockup',
+        'title': 'Tugas 01 - UID Android Mobile Game',
         'description':
             '1. Buatlah desain tampilan (antarmuka) pada aplikasi mobile game FPS (First Person Shooter) yang akan menjadi tugas pada mata kuliah Pemrograman Aplikasi Permainan.2. Desain yang dibuat harus melingkupi seluruh tampilan pada aplikasi/game, dari pertama kali aplikasi .............',
         'completed': true,

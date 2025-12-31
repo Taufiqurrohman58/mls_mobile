@@ -15,7 +15,7 @@ class TugasKuis extends StatelessWidget {
       },
       {
         'type': 'tugas',
-        'title': 'Tugas 01 - UID Android Mobile Game',
+        'title': ' Tugas 01 - UID Android Mobile Game',
         'completed': false,
         'deadline': '26 Februari 2021 23:59 WIB',
       },
