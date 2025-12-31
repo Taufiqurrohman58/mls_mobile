@@ -33,6 +33,8 @@ class PageTugasScreen extends StatelessWidget {
             _buildAssignmentContent(),
             const SizedBox(height: 16),
             _buildAssignmentStatus(),
+            const SizedBox(height: 50),
+            _buildAddTaskButton(),
           ],
         ),
       ),
@@ -72,6 +74,7 @@ class PageTugasScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // Status Tugas dengan background merah dan width full
         Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
@@ -92,10 +95,12 @@ class PageTugasScreen extends StatelessWidget {
           ),
         ),
 
+        // Detail Status Section
         Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Status Info dengan layout kiri-kanan
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -108,7 +113,7 @@ class PageTugasScreen extends StatelessWidget {
                         _buildStatusRow(
                           'Status',
                           'Sudah Mengirim untuk di nilai',
-                          Color.fromARGB(255, 238, 237, 237)!,
+                          Colors.grey[300]!,
                         ),
                         _buildStatusRow(
                           'Status Nilai',
@@ -117,18 +122,18 @@ class PageTugasScreen extends StatelessWidget {
                         ),
                         _buildStatusRow(
                           'Batas Tanggal',
-                          'Jumat, 26 Februari 2021, 23:59 WIB',
-                          const Color.fromARGB(255, 238, 237, 237)!,
+                          '26 Februari 2021 23:59 WIB',
+                          Colors.grey[300]!,
                         ),
                         _buildStatusRow(
                           'Sisa Waktu',
-                          '0 Hari 8 Jam 6 Menit',
+                          '0 Hari 0 Jam 0 Menit',
                           Colors.white,
                         ),
                         _buildStatusRow(
                           'File Tugas',
                           'UID_Android_Mobile_Game.pdf',
-                          Color.fromARGB(255, 238, 237, 237)!,
+                          Colors.grey[300]!,
                           iconPath: 'assets/images/ic_interactive_content.png',
                         ),
                       ],
@@ -168,7 +173,7 @@ class PageTugasScreen extends StatelessWidget {
           ),
           const SizedBox(width: 8),
           if (iconPath != null) ...[
-            Image.asset(iconPath, width: 24, height: 24, color: Colors.black54),
+            Image.asset(iconPath, width: 16, height: 16, color: Colors.black54),
             const SizedBox(width: 8),
           ],
           Expanded(
@@ -178,6 +183,28 @@ class PageTugasScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildAddTaskButton() {
+    return Center(
+      child: Container(
+        width: 155,
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        decoration: BoxDecoration(
+          color: Colors.grey,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: const Text(
+          'Tambahkan Tugas',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+          ),
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }
