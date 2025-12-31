@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'quiz_question_review_screen.dart';
 
 class QuizReviewScreen extends StatefulWidget {
   final String quizTitle;
@@ -404,7 +405,18 @@ class _QuizReviewScreenState extends State<QuizReviewScreen> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                // Handle "Lihat Soal" tap
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => QuizQuestionReviewScreen(
+                                      quizTitle: widget.quizTitle,
+                                      questionNumber: questionNumber,
+                                      questionText: questionText,
+                                      options: options,
+                                      selectedAnswer: selectedAnswer,
+                                    ),
+                                  ),
+                                );
                               },
                               child: const Text(
                                 'Lihat Soal',
