@@ -31,6 +31,8 @@ class PageTugasScreen extends StatelessWidget {
           children: [
             const SizedBox(height: 16),
             _buildAssignmentContent(),
+            const SizedBox(height: 16),
+            _buildAssignmentStatus(),
           ],
         ),
       ),
@@ -63,6 +65,120 @@ class PageTugasScreen extends StatelessWidget {
           ),
         );
       }).toList(),
+    );
+  }
+
+  Widget _buildAssignmentStatus() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+          decoration: BoxDecoration(
+            color: Color(0xFFB84A4A),
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(15),
+              topRight: Radius.circular(15),
+            ),
+          ),
+          child: const Text(
+            'Status Tugas',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+
+        Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Left side - Status
+                  Expanded(
+                    flex: 2,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildStatusRow(
+                          'Status',
+                          'Sudah Mengirim untuk di nilai',
+                          Color.fromARGB(255, 238, 237, 237)!,
+                        ),
+                        _buildStatusRow(
+                          'Status Nilai',
+                          'Belum Dinilai',
+                          Colors.white,
+                        ),
+                        _buildStatusRow(
+                          'Batas Tanggal',
+                          'Jumat, 26 Februari 2021, 23:59 WIB',
+                          const Color.fromARGB(255, 238, 237, 237)!,
+                        ),
+                        _buildStatusRow(
+                          'Sisa Waktu',
+                          '0 Hari 8 Jam 6 Menit',
+                          Colors.white,
+                        ),
+                        _buildStatusRow(
+                          'File Tugas',
+                          'UID_Android_Mobile_Game.pdf',
+                          Color.fromARGB(255, 238, 237, 237)!,
+                          iconPath: 'assets/images/ic_interactive_content.png',
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildStatusRow(
+    String label,
+    String value,
+    Color backgroundColor, {
+    String? iconPath,
+  }) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+      decoration: BoxDecoration(color: backgroundColor),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 120,
+            child: Text(
+              label,
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: Colors.black54,
+              ),
+            ),
+          ),
+          const SizedBox(width: 8),
+          if (iconPath != null) ...[
+            Image.asset(iconPath, width: 24, height: 24, color: Colors.black54),
+            const SizedBox(width: 8),
+          ],
+          Expanded(
+            child: Text(
+              value,
+              style: const TextStyle(fontSize: 14, color: Colors.black87),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
