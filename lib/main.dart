@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens/splash_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/main_screen.dart';
 import 'screens/pengumuman_screen.dart';
@@ -19,8 +20,9 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       title: 'LMS Mobile',
       theme: ThemeData(primarySwatch: Colors.red),
-      initialRoute: '/login',
+      initialRoute: '/splash',
       routes: {
+        '/splash': (context) => const SplashScreen(),
         '/login': (context) => const LoginScreen(),
         '/main': (context) => const MainScreen(),
         '/pengumuman': (context) => const PengumumanScreen(),
