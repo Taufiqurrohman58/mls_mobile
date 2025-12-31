@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'page_tugas_screen.dart';
+import 'quiz_screen.dart';
 
 class TugasKuis extends StatelessWidget {
   const TugasKuis({super.key});
@@ -46,6 +47,14 @@ class TugasKuis extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (context) =>
                           PageTugasScreen(title: task['title'].trim()),
+                    ),
+                  );
+                } else if (task['title'] == 'Quiz Review 01') {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          QuizScreen(quizTitle: task['title']),
                     ),
                   );
                 }

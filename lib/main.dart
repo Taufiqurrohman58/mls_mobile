@@ -4,6 +4,7 @@ import 'screens/main_screen.dart';
 import 'screens/pengumuman_screen.dart';
 import 'screens/profile_screen.dart';
 import 'screens/dashboard_class_screen.dart';
+import 'screens/quiz_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -24,6 +25,7 @@ class MainApp extends StatelessWidget {
         '/pengumuman': (context) => const PengumumanScreen(),
         '/profil': (context) => const ProfileScreen(),
         '/dashboard_class': (context) => const DashboardClassScreen(),
+        '/quiz': (context) => const QuizScreen(quizTitle: 'Quiz Review 01'),
       },
     );
   }
