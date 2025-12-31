@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../screens/slide_ppt_screen.dart';
+import '../screens/play_video_screen.dart';
 
 class LampiranMateri extends StatelessWidget {
   final List<Map<String, dynamic>> materials;
@@ -14,22 +15,16 @@ class LampiranMateri extends StatelessWidget {
       if (!url.startsWith('http://') && !url.startsWith('https://')) {
         formattedUrl = 'https://$url';
       }
-      
+
       final Uri uri = Uri.parse(formattedUrl);
-      
+
       // Try different launch modes in order of preference
       if (await canLaunchUrl(uri)) {
-        await launchUrl(
-          uri,
-          mode: LaunchMode.externalApplication,
-        );
+        await launchUrl(uri, mode: LaunchMode.externalApplication);
       } else {
         // Fallback: Try in-app web view
         try {
-          await launchUrl(
-            uri,
-            mode: LaunchMode.inAppWebView,
-          );
+          await launchUrl(uri, mode: LaunchMode.inAppWebView);
         } catch (webViewError) {
           // If all else fails, show error dialog
           if (context.mounted) {
@@ -113,6 +108,15 @@ class LampiranMateri extends StatelessWidget {
                     title: material['title'],
                     pdfPath: 'assets/01_Slide-Pengantar-PAA.pdf',
                   ),
+                ),
+              );
+            } else if (material['title'] ==
+                'User Interface Design for Beginner') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      PlayVideoScreen(title: material['title']),
                 ),
               );
             } else if (material['title'] == 'Zoom Meeting Syncronous') {
