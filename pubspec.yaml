@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  printing: ^5.11.1
 
   
 
@@ -41,3 +42,4 @@ flutter:
     - assets/images/ic_interactive_content.png
     - assets/images/ic_url.png
     - assets/images/gembira.png
+    - assets/01_Slide-Pengantar-PAA.pdf

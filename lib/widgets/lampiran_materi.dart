@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/slide_ppt_screen.dart';
 
 class LampiranMateri extends StatelessWidget {
   final List<Map<String, dynamic>> materials;
@@ -33,40 +34,59 @@ class LampiranMateri extends StatelessWidget {
             iconPath = 'assets/images/ic_file_video.png';
         }
 
-        return Card(
-          color: Colors.white,
-          margin: const EdgeInsets.all(8),
-          elevation: 2,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-            side: BorderSide(color: Colors.grey[300]!, width: 1),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Row(
-              children: [
-                Image.asset(iconPath, width: 24, height: 24),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Text(
-                    material['title'],
-                    style: const TextStyle(fontSize: 14),
+        return InkWell(
+          onTap: () {
+            if (material['title'] == 'Pengantar User Interface Design') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SlidePptScreen(
+                    title: material['title'],
+                    pdfPath: 'assets/01_Slide-Pengantar-PAA.pdf',
                   ),
                 ),
-                Container(
-                  width: 24,
-                  height: 24,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: material['completed']
-                        ? Colors.green
-                        : Colors.grey[300],
+              );
+            }
+          },
+          child: Card(
+            color: Colors.white,
+            margin: const EdgeInsets.all(8),
+            elevation: 2,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+              side: BorderSide(color: Colors.grey[300]!, width: 1),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: [
+                  Image.asset(iconPath, width: 24, height: 24),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      material['title'],
+                      style: const TextStyle(fontSize: 14),
+                    ),
                   ),
-                  child: material['completed']
-                      ? const Icon(Icons.check, size: 16, color: Colors.white)
-                      : const Icon(Icons.check, size: 16, color: Colors.white),
-                ),
-              ],
+                  Container(
+                    width: 24,
+                    height: 24,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: material['completed']
+                          ? Colors.green
+                          : Colors.grey[300],
+                    ),
+                    child: material['completed']
+                        ? const Icon(Icons.check, size: 16, color: Colors.white)
+                        : const Icon(
+                            Icons.check,
+                            size: 16,
+                            color: Colors.white,
+                          ),
+                  ),
+                ],
+              ),
             ),
           ),
         );
