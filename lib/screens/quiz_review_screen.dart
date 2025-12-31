@@ -408,13 +408,14 @@ class _QuizReviewScreenState extends State<QuizReviewScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => QuizQuestionReviewScreen(
-                                      quizTitle: widget.quizTitle,
-                                      questionNumber: questionNumber,
-                                      questionText: questionText,
-                                      options: options,
-                                      selectedAnswer: selectedAnswer,
-                                    ),
+                                    builder: (context) =>
+                                        QuizQuestionReviewScreen(
+                                          quizTitle: widget.quizTitle,
+                                          questionNumber: questionNumber,
+                                          questionText: questionText,
+                                          options: options,
+                                          selectedAnswer: selectedAnswer,
+                                        ),
                                   ),
                                 );
                               },
@@ -467,6 +468,33 @@ class _QuizReviewScreenState extends State<QuizReviewScreen> {
                     ),
                   );
                 },
+              ),
+
+              const SizedBox(height: 24),
+
+              // Submit Button
+              GestureDetector(
+                onTap: () {
+                  // Handle submit answers
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Text(
+                    'Kirim Jawaban',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
