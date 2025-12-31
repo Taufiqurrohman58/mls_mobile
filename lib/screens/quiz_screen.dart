@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../screens/dashboard_class_screen.dart';
+import '../screens/quiz_play_screen.dart';
 
 class QuizScreen extends StatelessWidget {
   final String quizTitle;
@@ -127,7 +128,7 @@ class QuizScreen extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.symmetric(vertical: 12),
                     decoration: const BoxDecoration(
-                      color: Colors.red,
+                      color:  Color(0xFFB84A4A) ,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(8),
                         topRight: Radius.circular(8),
@@ -259,7 +260,13 @@ class QuizScreen extends StatelessWidget {
                   // Ambil Kuis Button - Same design as Tambahkan Tugas
                   GestureDetector(
                     onTap: () {
-                      // Handle take quiz action
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              QuizPlayScreen(quizTitle: quizTitle),
+                        ),
+                      );
                     },
                     child: Container(
                       width: 155,
