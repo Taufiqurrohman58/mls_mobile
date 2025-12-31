@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/upload_file_sheet.dart';
 
 class PageTugasScreen extends StatelessWidget {
   final String title;
@@ -187,23 +188,37 @@ class PageTugasScreen extends StatelessWidget {
     );
   }
 
+  void _showUploadFileBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => const UploadFileSheet(),
+    );
+  }
+
   Widget _buildAddTaskButton() {
-    return Center(
-      child: Container(
-        width: 155,
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-        decoration: BoxDecoration(
-          color: Colors.grey,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: const Text(
-          'Tambahkan Tugas',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
+    return Builder(
+      builder: (context) => Center(
+        child: GestureDetector(
+          onTap: () => _showUploadFileBottomSheet(context),
+          child: Container(
+            width: 155,
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+            decoration: BoxDecoration(
+              color: Colors.grey,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: const Text(
+              'Tambahkan Tugas',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
           ),
-          textAlign: TextAlign.center,
         ),
       ),
     );
